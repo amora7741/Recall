@@ -1,15 +1,60 @@
+"use client";
+
 import { CardContent, CardFooter } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { Mail, Lock } from "lucide-react";
+import { Mail, Lock, LoaderCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { useTransition } from "react";
+import { useRouter } from "next/navigation";
+import { useToast } from "@/hooks/use-toast";
+import { loginAction, signUpAction } from "@/actions/auth";
 
 const AuthForm = ({ pageType }: { pageType: "login" | "signUp" }) => {
-  const isLoginPage = pageType === "login";
+  const isSignUpPage = pageType === "signUp";
+
+  const [isPending, startTransition] = useTransition();
+  const { toast } = useToast();
+  const router = useRouter();
+
+  const handleSubmit = (formData: FormData) => {
+    startTransition(async () => {
+      const email = formData.get("email") as string;
+      const password = formData.get("password") as string;
+
+      let errorMessage;
+
+      if (isSignUpPage) {
+        errorMessage = (await signUpAction(email, password)).errorMessage;
+      } else {
+        errorMessage = (await loginAction(email, password)).errorMessage;
+      }
+
+      if (errorMessage) {
+        toast({
+          variant: "destructive",
+          title: "Error",
+          description: errorMessage,
+        });
+
+        return;
+      }
+
+      if (isSignUpPage) {
+        toast({
+          variant: "success",
+          title: "Success!",
+          description: "You successfully registered.",
+        });
+      }
+
+      router.replace("/");
+    });
+  };
 
   return (
-    <form>
+    <form action={handleSubmit}>
       <CardContent className="space-y-4">
         <div className="space-y-2">
           <Label htmlFor="email">Email</Label>
@@ -17,8 +62,10 @@ const AuthForm = ({ pageType }: { pageType: "login" | "signUp" }) => {
             <Mail className="absolute left-3 top-2 size-5 text-muted-foreground" />
             <Input
               id="email"
+              name="email"
               type="email"
               placeholder="you@example.com"
+              disabled={isPending}
               className="pl-10"
               required
             />
@@ -32,8 +79,10 @@ const AuthForm = ({ pageType }: { pageType: "login" | "signUp" }) => {
             <Lock className="absolute left-3 top-2 size-5 text-muted-foreground" />
             <Input
               id="password"
+              name="password"
               type="password"
               placeholder="••••••••"
+              disabled={isPending}
               className="pl-10"
               required
             />
@@ -42,17 +91,23 @@ const AuthForm = ({ pageType }: { pageType: "login" | "signUp" }) => {
       </CardContent>
 
       <CardFooter className="flex flex-col space-y-4">
-        <Button type="submit" className="w-full py-5">
-          {isLoginPage ? "Log In" : "Sign Up"}
+        <Button type="submit" disabled={isPending} className="w-full py-5">
+          {isPending ? (
+            <LoaderCircle className="animate-spin" />
+          ) : isSignUpPage ? (
+            "Sign Up"
+          ) : (
+            "Log In"
+          )}
         </Button>
 
         <p className="text-center text-sm">
-          {isLoginPage ? "Don't have an account?" : "Already have an account?"}{" "}
+          {isSignUpPage ? "Already have an account?" : "Don't have an account?"}{" "}
           <Link
-            href={isLoginPage ? "/sign-up" : "/login"}
+            href={isSignUpPage ? "/login" : "/sign-up"}
             className="font-medium text-rose-500 hover:underline"
           >
-            {isLoginPage ? "Sign Up" : "Log In"}
+            {isSignUpPage ? "Log In" : "Sign Up"}
           </Link>
         </p>
       </CardFooter>
