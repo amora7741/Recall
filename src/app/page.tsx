@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { featureCards } from "@/data";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -16,12 +17,14 @@ export default function Home() {
             retrieve your ideas instantly with AI assistance.
           </p>
           <div className="flex items-center gap-4">
-            <Button className="px-8 py-5">
-              <span>Try Recall</span>
-              <ArrowRight />
+            <Button className="px-8 py-5" asChild>
+              <Link href="/notes">
+                <span>Try Recall</span>
+                <ArrowRight />
+              </Link>
             </Button>
-            <Button className="px-8 py-5" variant="outline">
-              Learn More
+            <Button asChild className="px-8 py-5" variant="outline">
+              <Link href="#learn-more">Learn More</Link>
             </Button>
           </div>
         </div>
@@ -29,7 +32,10 @@ export default function Home() {
         <div className="grid aspect-[16/10] place-items-center rounded-lg shadow-lg" />
       </section>
 
-      <section className="mx-auto mb-40 max-w-screen-2xl space-y-16 p-4 sm:px-8">
+      <section
+        id="learn-more"
+        className="mx-auto mb-40 max-w-screen-2xl scroll-m-40 space-y-16 p-4 sm:px-8"
+      >
         <div className="space-y-4 text-center">
           <h2 className="text-4xl font-bold">Supercharge your note-taking</h2>
           <p className="mx-auto max-w-2xl text-xl">
@@ -77,9 +83,11 @@ export default function Home() {
             </p>
           </div>
 
-          <Button className="px-8 py-5 text-lg">
-            <span>Get Started</span>
-            <ArrowRight className="!size-5" />
+          <Button asChild className="px-8 py-5 text-lg">
+            <Link href="/notes">
+              <span>Get Started</span>
+              <ArrowRight className="!size-5" />
+            </Link>
           </Button>
         </div>
       </section>
