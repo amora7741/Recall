@@ -45,7 +45,8 @@ const AuthForm = ({ pageType }: { pageType: "login" | "signUp" }) => {
         toast({
           variant: "success",
           title: "Success!",
-          description: "You successfully registered.",
+          description:
+            "You successfully registered! Check your email for confirmation.",
         });
       }
 
