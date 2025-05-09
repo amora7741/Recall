@@ -1,7 +1,7 @@
 import React from "react";
 
 const Notes = () => {
-  return <div>Notes</div>;
+  return <div className="min-h-[300vh]">Notes</div>;
 };
 
 export default Notes;
