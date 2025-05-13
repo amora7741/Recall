@@ -8,8 +8,8 @@ const Navbar = async () => {
   const user = await getUser();
 
   return (
-    <header className="sticky top-0 bg-background/50 backdrop-blur-lg">
-      <nav className="mx-auto flex max-w-screen-2xl items-center justify-between p-4 sm:px-8">
+    <header className="sticky top-0 border-b bg-background/50 backdrop-blur-lg">
+      <nav className="flex items-center justify-between p-4 sm:px-8">
         <Link className="text-2xl font-bold text-rose-500" href="/">
           Recall
         </Link>
