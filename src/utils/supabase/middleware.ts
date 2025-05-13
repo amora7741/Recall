@@ -29,10 +29,39 @@ export async function updateSession(request: NextRequest) {
     },
   );
 
+  const pathName = request.nextUrl.pathname;
+
   const {
-    // eslint-disable-next-line
     data: { user },
   } = await supabase.auth.getUser();
+
+  const authRoutes = ["/login", "/sign-up"];
+  const sensitiveRoutes = ["/notes"];
+
+  const isAccessingAuthRoute = authRoutes.some((route) =>
+    pathName.startsWith(route),
+  );
+  const isAccessingSensitiveRoute = sensitiveRoutes.some((route) =>
+    pathName.startsWith(route),
+  );
+
+  if (isAccessingAuthRoute) {
+    if (user) {
+      const url = request.nextUrl.clone();
+      url.pathname = "/";
+
+      return NextResponse.redirect(url);
+    }
+
+    return NextResponse.next();
+  }
+
+  if (!user && isAccessingSensitiveRoute) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/login";
+
+    return NextResponse.redirect(url);
+  }
 
   return supabaseResponse;
 }
