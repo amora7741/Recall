@@ -7,12 +7,12 @@ const NotFound = () => {
   return (
     <div className="grid size-full place-items-center">
       <div className="flex flex-col items-center gap-4">
-        <p className="text-center text-3xl font-bold sm:text-5xl">
+        <p className="text-center text-3xl font-bold">
           This page does not exist...
         </p>
         <Button asChild>
           <Link href="/">
-            <span className="text-lg">Go Home</span>
+            <span>Go Home</span>
             <MoveRight />
           </Link>
         </Button>
