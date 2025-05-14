@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Button } from "./ui/button";
-import { ModeToggle } from "./ThemeToggle";
+import { Button } from "@/components/ui/button";
+import { ModeToggle } from "@/components/ThemeToggle";
 import { getUser } from "@/utils/supabase/server";
 import LogOutButton from "@/components/LogOutButton";
 
