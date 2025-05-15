@@ -11,7 +11,7 @@ const SignUp = () => {
     <div className="mx-auto mt-10 w-full max-w-screen-2xl space-y-8 p-4 sm:px-8">
       <div className="space-y-2 text-center">
         <h1 className="text-4xl font-bold">
-          Join <span className="text-rose-500">Recall</span>
+          Join <span className="text-primary">Recall</span>
         </h1>
         <p className="text-lg">
           Create your account and start taking smarter notes today!

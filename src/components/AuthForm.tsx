@@ -106,7 +106,7 @@ const AuthForm = ({ pageType }: { pageType: "login" | "signUp" }) => {
           {isSignUpPage ? "Already have an account?" : "Don't have an account?"}{" "}
           <Link
             href={isSignUpPage ? "/login" : "/sign-up"}
-            className="font-medium text-rose-500 hover:underline"
+            className="font-medium text-primary hover:underline"
           >
             {isSignUpPage ? "Log In" : "Sign Up"}
           </Link>

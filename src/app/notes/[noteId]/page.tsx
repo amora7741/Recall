@@ -2,7 +2,7 @@ import NoteTextInput from "@/components/NoteTextInput";
 import { Button } from "@/components/ui/button";
 import { prisma } from "@/db/prisma";
 import { getUser } from "@/utils/supabase/server";
-import { Bot, MoveRight, Save } from "lucide-react";
+import { ArrowLeft, Bot, MoveRight, Save } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -44,17 +44,23 @@ const NotePage = async ({
 
   return (
     <div className="mx-auto flex size-full max-w-screen-xl flex-col gap-4 p-4 sm:p-8">
-      <div className="flex items-center justify-end gap-4">
-        <Button>
-          <Bot />
-
-          <span>Ask AI</span>
+      <div className="flex items-center justify-between">
+        <Button className="size-fit rounded-full p-2" asChild>
+          <Link href="/notes">
+            <ArrowLeft />
+          </Link>
         </Button>
 
-        <Button>
-          <Save />
-          <span>Save Note</span>
-        </Button>
+        <div className="flex items-center gap-4">
+          <Button>
+            <Bot />
+            <span>Ask AI</span>
+          </Button>
+          <Button>
+            <Save />
+            <span>Save Note</span>
+          </Button>
+        </div>
       </div>
 
       <NoteTextInput noteId={note.id} noteText={note.text} />

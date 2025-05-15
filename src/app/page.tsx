@@ -9,7 +9,7 @@ export default function Home() {
       <section className="mx-auto mb-40 mt-20 grid max-w-screen-2xl gap-8 p-4 sm:px-8 lg:grid-cols-2">
         <div className="space-y-8">
           <h1 className="text-6xl font-bold">
-            Remember <span className="text-rose-500">everything</span> with the
+            Remember <span className="text-primary">everything</span> with the
             power of AI
           </h1>
           <p className="text-xl">
@@ -47,11 +47,11 @@ export default function Home() {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {featureCards.map((card, i) => (
             <div
-              className="flex flex-col gap-2 rounded-lg border p-4 transition hover:border-rose-500/50 hover:shadow-lg"
+              className="flex flex-col gap-2 rounded-lg border p-4 transition hover:border-primary/50 hover:shadow-lg"
               key={i}
             >
-              <div className="size-fit rounded-lg bg-rose-500/10 p-2">
-                <card.Icon className="text-rose-500" />
+              <div className="size-fit rounded-lg bg-primary/10 p-2">
+                <card.Icon className="text-primary" />
               </div>
               <h3 className="text-xl font-semibold">{card.title}</h3>
               <p>{card.description}</p>
@@ -73,7 +73,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-rose-500">
+      <section className="bg-primary">
         <div className="mx-auto flex max-w-screen-2xl flex-col items-center gap-8 px-4 py-20 sm:px-8">
           <div className="space-y-4 text-center text-white">
             <h2 className="text-4xl font-bold">Ready to try Recall?</h2>

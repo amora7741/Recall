@@ -10,7 +10,7 @@ const Navbar = async () => {
   return (
     <header className="sticky top-0 border-b bg-background/50 backdrop-blur-lg">
       <nav className="flex items-center justify-between p-4 sm:px-8">
-        <Link className="text-2xl font-bold text-rose-500" href="/">
+        <Link className="text-2xl font-bold text-primary" href="/">
           Recall
         </Link>
         <div className="flex items-center gap-4">

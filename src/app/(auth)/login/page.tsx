@@ -12,7 +12,7 @@ const Login = () => {
       <div className="space-y-2 text-center">
         <h1 className="text-4xl font-bold">Welcome back!</h1>
         <p className="text-lg">
-          Log in to <span className="text-rose-500">Recall</span> and continue
+          Log in to <span className="text-primary">Recall</span> and continue
           your journey
         </p>
       </div>
