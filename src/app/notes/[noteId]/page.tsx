@@ -57,7 +57,7 @@ const NotePage = async ({
         </Button>
       </div>
 
-      <NoteTextInput />
+      <NoteTextInput noteId={note.id} noteText={note.text} />
     </div>
   );
 };
