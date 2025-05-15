@@ -1,6 +1,7 @@
 import { getUser } from "@/utils/supabase/server";
 import { prisma } from "@/db/prisma";
 import { Note } from "@prisma/client";
+import CreateNoteButton from "@/components/CreateNoteButton";
 
 const NoteSidebar = async () => {
   const user = await getUser();
@@ -14,7 +15,11 @@ const NoteSidebar = async () => {
 
   return (
     <div className="w-80 border-r bg-muted p-4 sm:p-8">
-      <h1 className="text-xl font-semibold">My Notes</h1>
+      <div className="flex items-center justify-between">
+        <h1 className="text-xl font-semibold">My Notes</h1>
+
+        <CreateNoteButton showText={false} />
+      </div>
     </div>
   );
 };

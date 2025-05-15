@@ -4,6 +4,7 @@ import { prisma } from "@/db/prisma";
 import { getUser } from "@/utils/supabase/server";
 import { Bot, MoveRight, Save } from "lucide-react";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 const NotePage = async ({
   params,
@@ -36,6 +37,10 @@ const NotePage = async ({
   const note = await prisma.note.findUnique({
     where: { id: noteId, authorId: user.id },
   });
+
+  if (!note) {
+    notFound();
+  }
 
   return (
     <div className="mx-auto flex size-full max-w-screen-xl flex-col gap-4 p-4 sm:p-8">
