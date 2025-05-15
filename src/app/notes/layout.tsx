@@ -6,7 +6,7 @@ export default function NotesLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex size-full">
+    <div className="flex w-full">
       <NoteSidebar />
 
       <div className="flex-1">{children}</div>

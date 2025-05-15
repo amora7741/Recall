@@ -28,9 +28,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="relative grid min-h-dvh grid-rows-[auto_1fr]">
+          <div className="relative flex max-h-dvh min-h-dvh flex-col">
             <Navbar />
-            <main>{children}</main>
+            <main className="flex min-h-0 flex-1">{children}</main>
           </div>
 
           <Toaster />

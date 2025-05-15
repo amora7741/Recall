@@ -5,7 +5,7 @@ import React from "react";
 
 const NotFound = () => {
   return (
-    <div className="grid size-full place-items-center">
+    <div className="grid w-full place-items-center">
       <div className="flex flex-col items-center gap-4">
         <p className="text-center text-3xl font-bold">
           This page does not exist...
