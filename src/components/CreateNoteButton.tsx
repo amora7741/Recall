@@ -30,6 +30,8 @@ const CreateNoteButton = ({ showText = true }: { showText?: boolean }) => {
       }
 
       router.push(`/notes/${uuid}`);
+
+      router.refresh();
     });
   };
 

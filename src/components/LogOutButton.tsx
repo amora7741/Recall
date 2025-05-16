@@ -5,11 +5,9 @@ import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { logOutAction } from "@/actions/auth";
 import { LoaderCircle } from "lucide-react";
-import { useRouter } from "next/navigation";
 
 function LogOutButton() {
   const { toast } = useToast();
-  const router = useRouter();
 
   const [loading, setLoading] = useState(false);
 
@@ -27,8 +25,6 @@ function LogOutButton() {
 
       return;
     }
-
-    router.replace("/");
 
     setLoading(false);
   };

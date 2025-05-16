@@ -23,7 +23,7 @@ const NoteSidebar = async () => {
       </div>
 
       {notes.length === 0 ? (
-        <p className="italic">No notes found.</p>
+        <p className="text-center italic">No notes found.</p>
       ) : (
         <div className="flex flex-col gap-2 px-4 pb-4 sm:px-8 sm:pb-8">
           {notes.map((note) => (
