@@ -29,7 +29,7 @@ const NoteTextInput = ({
   return (
     <Textarea
       placeholder="Type your notes here.."
-      className="size-full resize-none"
+      className="size-full resize-none bg-background p-8 !text-lg"
       onChange={handleUpdateNote}
       value={text}
     />

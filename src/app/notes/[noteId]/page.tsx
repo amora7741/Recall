@@ -43,7 +43,7 @@ const NotePage = async ({
   }
 
   return (
-    <div className="mx-auto flex size-full max-w-screen-xl flex-col gap-4 p-4 sm:p-8">
+    <div className="mx-auto flex size-full max-w-4xl flex-col gap-4 p-4 sm:p-8">
       <div className="flex items-center justify-between">
         <Button className="size-fit rounded-full p-2" asChild>
           <Link href="/notes">
