@@ -51,16 +51,10 @@ const NotePage = async ({
           </a>
         </Button>
 
-        <div className="flex items-center gap-4">
-          <Button>
-            <Bot />
-            <span>Ask AI</span>
-          </Button>
-          <Button>
-            <Save />
-            <span>Save Note</span>
-          </Button>
-        </div>
+        <Button>
+          <Bot />
+          <span>Ask AI</span>
+        </Button>
       </div>
 
       <NoteTextInput noteId={note.id} noteText={note.text} />
