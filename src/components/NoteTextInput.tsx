@@ -1,8 +1,9 @@
 "use client";
 
 import { updateNoteAction } from "@/actions/notes";
+import { useNotesStore } from "@/store/notes";
 import { Textarea } from "@/components/ui/textarea";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 let updateTimeout: NodeJS.Timeout;
 
@@ -14,25 +15,48 @@ const NoteTextInput = ({
   noteText: string;
 }) => {
   const [text, setText] = useState(noteText);
+  const [isSaving, setIsSaving] = useState(false);
+  const { updateCurrentNote, clearCurrentNote } = useNotesStore();
+
+  useEffect(() => {
+    return () => {
+      clearCurrentNote();
+    };
+  }, [clearCurrentNote]);
 
   const handleUpdateNote = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newText = e.target.value;
     setText(newText);
+    setIsSaving(true);
+
+    updateCurrentNote(noteId, newText);
 
     clearTimeout(updateTimeout);
 
     updateTimeout = setTimeout(() => {
       updateNoteAction(noteId, newText);
+
+      setTimeout(() => {
+        setIsSaving(false);
+      }, 500);
     }, 1500);
   };
 
   return (
-    <Textarea
-      placeholder="Type your notes here.."
-      className="size-full resize-none bg-background p-8 !text-lg"
-      onChange={handleUpdateNote}
-      value={text}
-    />
+    <div className="relative size-full">
+      <Textarea
+        placeholder="Type your notes here.."
+        className="size-full resize-none bg-background p-8 !text-lg"
+        onChange={handleUpdateNote}
+        value={text}
+      />
+
+      {isSaving && (
+        <span className="absolute bottom-4 right-4 rounded-lg bg-primary/10 p-2 text-sm text-primary">
+          Saving...
+        </span>
+      )}
+    </div>
   );
 };
 

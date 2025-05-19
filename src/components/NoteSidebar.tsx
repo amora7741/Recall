@@ -1,8 +1,8 @@
 import { getUser } from "@/utils/supabase/server";
 import { prisma } from "@/db/prisma";
-import { Note } from "@prisma/client";
 import CreateNoteButton from "@/components/CreateNoteButton";
-import Link from "next/link";
+import Notes from "@/components/Notes";
+import { Note } from "@prisma/client";
 
 const NoteSidebar = async () => {
   const user = await getUser();
@@ -22,30 +22,7 @@ const NoteSidebar = async () => {
         <CreateNoteButton showText={false} />
       </div>
 
-      {notes.length === 0 ? (
-        <p className="text-center italic">No notes found.</p>
-      ) : (
-        <div className="flex flex-col gap-2 px-4 pb-4 sm:px-8 sm:pb-8">
-          {notes.map((note) => (
-            <Link
-              key={note.id}
-              className="rounded-lg bg-primary p-2 text-white"
-              href={`/notes/${note.id}`}
-            >
-              <p className="truncate">{note.text}</p>
-
-              <p className="text-right text-sm">
-                {note.updatedAt.toLocaleTimeString([], {
-                  hour: "2-digit",
-                  minute: "2-digit",
-                  second: undefined,
-                  hour12: true,
-                })}
-              </p>
-            </Link>
-          ))}
-        </div>
-      )}
+      <Notes initialNotes={notes} />
     </div>
   );
 };
