@@ -29,11 +29,11 @@ export async function updateSession(request: NextRequest) {
     },
   );
 
-  const pathName = request.nextUrl.pathname;
-
   const {
     data: { user },
   } = await supabase.auth.getUser();
+
+  const pathName = request.nextUrl.pathname;
 
   const authRoutes = ["/login", "/sign-up"];
   const sensitiveRoutes = ["/notes"];
