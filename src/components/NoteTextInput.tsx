@@ -44,13 +44,13 @@ const NoteTextInput = ({
     <div className="relative size-full">
       <Textarea
         placeholder="Type your notes here.."
-        className="size-full resize-none bg-background p-8 !text-lg"
+        className="size-full resize-none bg-background p-12 !text-lg"
         onChange={handleUpdateNote}
         value={text}
       />
 
       {isSaving && (
-        <span className="absolute bottom-4 right-4 rounded-lg bg-primary/10 p-2 text-sm text-primary">
+        <span className="absolute right-4 top-4 rounded-lg bg-primary/10 p-2 text-sm text-primary">
           Saving...
         </span>
       )}

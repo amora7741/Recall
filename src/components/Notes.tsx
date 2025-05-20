@@ -52,31 +52,24 @@ const Notes = ({ initialNotes }: { initialNotes: Note[] }) => {
         />
       </div>
 
-      {filteredNotes.map((note) => {
-        const displayText =
-          currentNote && currentNote.id === note.id
-            ? currentNote.text
-            : note.text;
+      {filteredNotes.map((note) => (
+        <a
+          key={note.id}
+          className="rounded-lg bg-primary p-2 text-white"
+          href={`/notes/${note.id}`}
+        >
+          <p className="truncate">{note.text || "Empty Note"}</p>
 
-        return (
-          <a
-            key={note.id}
-            className="rounded-lg bg-primary p-2 text-white"
-            href={`/notes/${note.id}`}
-          >
-            <p className="truncate">{displayText || "Empty Note"}</p>
-
-            <p className="text-right text-sm">
-              {new Date(note.updatedAt).toLocaleTimeString([], {
-                hour: "2-digit",
-                minute: "2-digit",
-                second: undefined,
-                hour12: true,
-              })}
-            </p>
-          </a>
-        );
-      })}
+          <p className="text-right text-sm">
+            {new Date(note.updatedAt).toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+              second: undefined,
+              hour12: true,
+            })}
+          </p>
+        </a>
+      ))}
     </div>
   );
 };
