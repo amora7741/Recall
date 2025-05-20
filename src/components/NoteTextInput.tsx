@@ -33,12 +33,10 @@ const NoteTextInput = ({
 
     clearTimeout(updateTimeout);
 
-    updateTimeout = setTimeout(() => {
-      updateNoteAction(noteId, newText);
+    updateTimeout = setTimeout(async () => {
+      await updateNoteAction(noteId, newText);
 
-      setTimeout(() => {
-        setIsSaving(false);
-      }, 500);
+      setIsSaving(false);
     }, 1500);
   };
 
