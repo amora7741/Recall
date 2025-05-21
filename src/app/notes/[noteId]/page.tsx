@@ -2,7 +2,7 @@ import NoteTextInput from "@/components/NoteTextInput";
 import { Button } from "@/components/ui/button";
 import { prisma } from "@/db/prisma";
 import { getUser } from "@/utils/supabase/server";
-import { ArrowLeft, Bot, MoveRight, Save } from "lucide-react";
+import { ArrowLeft, Bot, MoveRight } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 

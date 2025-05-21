@@ -17,6 +17,12 @@ const Notes = ({ initialNotes }: { initialNotes: Note[] }) => {
     setLocalNotes(initialNotes);
   }, [initialNotes]);
 
+  const handleLocalNoteDelete = (noteId: string) => {
+    setLocalNotes((prevNotes) =>
+      prevNotes.filter((note) => note.id !== noteId),
+    );
+  };
+
   const realTimeNotes = useMemo(() => {
     return localNotes.map((note) => {
       if (currentNote && currentNote.id === note.id) {
@@ -37,7 +43,7 @@ const Notes = ({ initialNotes }: { initialNotes: Note[] }) => {
     ? fuse.search(searchText).map((result) => result.item)
     : realTimeNotes;
 
-  if (initialNotes.length === 0) {
+  if (localNotes.length === 0) {
     return <p className="text-center italic">No notes found.</p>;
   }
 
@@ -70,7 +76,7 @@ const Notes = ({ initialNotes }: { initialNotes: Note[] }) => {
             </p>
           </a>
 
-          <DeleteNoteButton />
+          <DeleteNoteButton noteId={note.id} onDelete={handleLocalNoteDelete} />
         </div>
       ))}
     </div>
