@@ -6,6 +6,7 @@ import { useState, useMemo, useEffect } from "react";
 import Fuse from "fuse.js";
 import { Input } from "@/components/ui/input";
 import { SearchIcon } from "lucide-react";
+import DeleteNoteButton from "@/components/DeleteNoteButton";
 
 const Notes = ({ initialNotes }: { initialNotes: Note[] }) => {
   const { currentNote } = useNotesStore();
@@ -53,22 +54,24 @@ const Notes = ({ initialNotes }: { initialNotes: Note[] }) => {
       </div>
 
       {filteredNotes.map((note) => (
-        <a
+        <div
           key={note.id}
-          className="rounded-lg bg-primary p-2 text-white"
-          href={`/notes/${note.id}`}
+          className="group/note relative flex items-center rounded-lg bg-primary pr-14 text-white"
         >
-          <p className="truncate">{note.text || "Empty Note"}</p>
+          <a className="size-full p-2" href={`/notes/${note.id}`}>
+            <p className="truncate">{note.text || "Empty Note"}</p>
+            <p className="text-xs">
+              {new Date(note.updatedAt).toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+                second: undefined,
+                hour12: true,
+              })}
+            </p>
+          </a>
 
-          <p className="text-right text-sm">
-            {new Date(note.updatedAt).toLocaleTimeString([], {
-              hour: "2-digit",
-              minute: "2-digit",
-              second: undefined,
-              hour12: true,
-            })}
-          </p>
-        </a>
+          <DeleteNoteButton />
+        </div>
       ))}
     </div>
   );
