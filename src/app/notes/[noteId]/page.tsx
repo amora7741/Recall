@@ -1,8 +1,9 @@
+import AskAIButton from "@/components/AskAIButton";
 import NoteTextInput from "@/components/NoteTextInput";
 import { Button } from "@/components/ui/button";
 import { prisma } from "@/db/prisma";
 import { getUser } from "@/utils/supabase/server";
-import { ArrowLeft, Bot, MoveRight } from "lucide-react";
+import { ArrowLeft, MoveRight } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -51,10 +52,7 @@ const NotePage = async ({
           </a>
         </Button>
 
-        <Button>
-          <Bot />
-          <span>Ask AI</span>
-        </Button>
+        <AskAIButton />
       </div>
 
       <NoteTextInput noteId={note.id} noteText={note.text} />
