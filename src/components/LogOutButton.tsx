@@ -6,7 +6,7 @@ import { useToast } from "@/hooks/use-toast";
 import { logOutAction } from "@/actions/auth";
 import { LoaderCircle } from "lucide-react";
 
-function LogOutButton() {
+const LogOutButton = () => {
   const { toast } = useToast();
 
   const [loading, setLoading] = useState(false);
@@ -34,6 +34,6 @@ function LogOutButton() {
       {loading ? <LoaderCircle className="animate-spin" /> : "Log Out"}
     </Button>
   );
-}
+};
 
 export default LogOutButton;

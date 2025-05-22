@@ -18,13 +18,13 @@ import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
 import { deleteNoteAction } from "@/actions/notes";
 
-function DeleteNoteButton({
+const DeleteNoteButton = ({
   noteId,
   onDelete,
 }: {
   noteId: string;
   onDelete: (noteId: string) => void;
-}) {
+}) => {
   const { toast } = useToast();
   const router = useRouter();
 
@@ -87,6 +87,6 @@ function DeleteNoteButton({
       </AlertDialogContent>
     </AlertDialog>
   );
-}
+};
 
 export default DeleteNoteButton;
