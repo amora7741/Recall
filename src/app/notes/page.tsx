@@ -4,6 +4,7 @@ import { getUser } from "@/utils/supabase/server";
 import { prisma } from "@/db/prisma";
 import { notFound } from "next/navigation";
 import { FileText, Sparkles } from "lucide-react";
+import AskAIButton from "@/components/AskAIButton";
 
 const Notes = async () => {
   const user = await getUser();
@@ -43,7 +44,10 @@ const Notes = async () => {
           )}
         </p>
 
-        <CreateNoteButton />
+        <div className="flex items-center gap-4">
+          <CreateNoteButton />
+          <AskAIButton />
+        </div>
       </div>
     </div>
   );
