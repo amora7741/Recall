@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { generateAIResponse } from "@/actions/ai";
 
+import DOMPurify from "dompurify";
+
 export function AIChat() {
   const [inputValue, setInputValue] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>([]);
@@ -143,7 +145,9 @@ export function AIChat() {
               {message.role === "assistant" ? (
                 <div
                   className="prose prose-sm max-w-none"
-                  dangerouslySetInnerHTML={{ __html: message.content }}
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(message.content),
+                  }}
                 />
               ) : (
                 <p>{message.content}</p>
