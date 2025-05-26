@@ -2,11 +2,19 @@
 
 import { useTheme } from "next-themes";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const HomeImage = () => {
   const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  const isDarkMode = theme === "dark";
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isDarkMode = mounted && theme === "dark";
+
+  if (!mounted) return null;
 
   return (
     <>
