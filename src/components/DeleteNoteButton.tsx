@@ -45,6 +45,7 @@ const DeleteNoteButton = ({
       }
 
       router.replace("/notes");
+      router.refresh();
       onDelete(noteId);
 
       toast({
