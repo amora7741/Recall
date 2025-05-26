@@ -83,7 +83,7 @@ export function AIChat() {
 
       <div className="flex-1 space-y-4 overflow-y-auto bg-secondary/10 px-4 py-2">
         {messages.length === 0 && (
-          <div className="py-8 text-center text-muted-foreground">
+          <div className="py-4 text-center text-muted-foreground">
             <h3 className="mb-2 text-lg font-medium">
               How can I help you with your notes?
             </h3>
@@ -144,7 +144,7 @@ export function AIChat() {
             >
               {message.role === "assistant" ? (
                 <div
-                  className="prose prose-sm max-w-none"
+                  className="prose prose-sm max-w-none md:prose-base"
                   dangerouslySetInnerHTML={{
                     __html: DOMPurify.sanitize(message.content),
                   }}
