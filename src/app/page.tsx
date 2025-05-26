@@ -1,3 +1,4 @@
+import HomeImage from "@/components/HomeImage";
 import { Button } from "@/components/ui/button";
 import { featureCards } from "@/data";
 import { ArrowRight } from "lucide-react";
@@ -29,7 +30,9 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid aspect-[16/10] place-items-center rounded-lg shadow-lg" />
+        <div className="relative aspect-[16/10] overflow-hidden rounded-lg shadow-lg">
+          <HomeImage />
+        </div>
       </section>
 
       <section
