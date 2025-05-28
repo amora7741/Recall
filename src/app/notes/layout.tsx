@@ -9,7 +9,7 @@ export default function NotesLayout({
     <div className="flex w-full">
       <NoteSidebar />
 
-      <div className="flex-1 bg-muted">{children}</div>
+      <div className="flex-1 overflow-y-auto bg-muted">{children}</div>
     </div>
   );
 }

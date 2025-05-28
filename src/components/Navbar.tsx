@@ -8,7 +8,7 @@ const Navbar = async () => {
   const user = await getUser();
 
   return (
-    <header className="sticky top-0 border-b bg-background/50 backdrop-blur-lg">
+    <header className="sticky top-0 z-50 border-b bg-background/50 backdrop-blur-lg">
       <nav className="flex items-center justify-between p-4 sm:px-8">
         <Link className="text-2xl font-bold text-primary" href="/">
           Recall

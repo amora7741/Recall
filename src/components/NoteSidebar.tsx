@@ -16,7 +16,7 @@ const NoteSidebar = async () => {
 
   return (
     <div className="relative w-80 overflow-y-auto border-r bg-muted">
-      <div className="sticky top-0 flex items-center justify-between bg-muted/80 p-4 backdrop-blur-lg sm:p-8">
+      <div className="sticky top-0 z-10 flex items-center justify-between bg-muted/80 p-4 backdrop-blur-lg sm:p-8">
         <h1 className="text-xl font-semibold">My Notes</h1>
 
         <CreateNoteButton showText={false} />
