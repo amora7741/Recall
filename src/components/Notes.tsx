@@ -11,9 +11,11 @@ import { cn } from "@/lib/utils";
 const Notes = ({
   initialNotes,
   listClassName,
+  hideDeleteButton = false,
 }: {
   initialNotes: Note[];
   listClassName?: string;
+  hideDeleteButton?: boolean;
 }) => {
   const { currentNote } = useNotesStore();
   const [searchText, setSearchText] = useState("");
@@ -75,7 +77,8 @@ const Notes = ({
                 })}
               </p>
             </a>
-            <DeleteNoteButton noteId={note.id} />
+
+            <DeleteNoteButton hidden={hideDeleteButton} noteId={note.id} />
           </li>
         ))}
       </ul>

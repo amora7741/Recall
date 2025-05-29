@@ -17,8 +17,14 @@ import { useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
 import { deleteNoteAction } from "@/actions/notes";
-
-const DeleteNoteButton = ({ noteId }: { noteId: string }) => {
+import { cn } from "@/lib/utils";
+const DeleteNoteButton = ({
+  noteId,
+  hidden = false,
+}: {
+  noteId: string;
+  hidden?: boolean;
+}) => {
   const { toast } = useToast();
   const router = useRouter();
 
@@ -52,7 +58,10 @@ const DeleteNoteButton = ({ noteId }: { noteId: string }) => {
     <AlertDialog>
       <AlertDialogTrigger asChild>
         <Button
-          className="absolute right-3 hidden group-focus-within/note:flex group-hover/note:flex"
+          className={cn(
+            "absolute right-3 group-focus-within/note:flex group-hover/note:flex",
+            hidden && "hidden",
+          )}
           variant="ghost"
           size="icon"
         >

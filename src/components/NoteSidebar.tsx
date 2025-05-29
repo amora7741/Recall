@@ -9,8 +9,8 @@ import {
   SheetDescription,
   SheetTitle,
   SheetTrigger,
-} from "./ui/sheet";
-import { Button } from "./ui/button";
+} from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 
 const NoteSidebar = async () => {
@@ -53,7 +53,11 @@ const NoteSidebar = async () => {
           <CreateNoteButton hideText />
         </div>
 
-        <Notes initialNotes={notes} listClassName="p-4 !pt-2 sm:p-8" />
+        <Notes
+          initialNotes={notes}
+          hideDeleteButton
+          listClassName="p-4 !pt-2 sm:p-8"
+        />
       </div>
     </>
   );
