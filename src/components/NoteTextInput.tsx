@@ -45,7 +45,7 @@ const NoteTextInput = ({
       <Textarea
         placeholder="Type your notes here.."
         autoFocus
-        className="size-full resize-none bg-background p-12 !text-lg"
+        className="size-full resize-none bg-background p-12 md:text-lg"
         onChange={handleUpdateNote}
         value={text}
       />

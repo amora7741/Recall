@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { useTransition } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-const CreateNoteButton = ({ showText = true }: { showText?: boolean }) => {
+const CreateNoteButton = ({ hideText = false }: { hideText?: boolean }) => {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const { toast } = useToast();
@@ -37,7 +37,7 @@ const CreateNoteButton = ({ showText = true }: { showText?: boolean }) => {
 
   return (
     <Button
-      className={showText ? "w-36" : "h-fit w-10 p-2"}
+      className={hideText ? "h-fit w-10 p-2" : "w-36"}
       onClick={handleClick}
       disabled={isPending}
     >
@@ -45,7 +45,7 @@ const CreateNoteButton = ({ showText = true }: { showText?: boolean }) => {
         <LoaderCircle className="animate-spin" />
       ) : (
         <>
-          {showText && <span>Create Note</span>}
+          {!hideText && <span>Create Note</span>}
           <Plus />
         </>
       )}

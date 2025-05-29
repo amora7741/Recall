@@ -7,8 +7,14 @@ import Fuse from "fuse.js";
 import { Input } from "@/components/ui/input";
 import { SearchIcon } from "lucide-react";
 import DeleteNoteButton from "@/components/DeleteNoteButton";
-
-const Notes = ({ initialNotes }: { initialNotes: Note[] }) => {
+import { cn } from "@/lib/utils";
+const Notes = ({
+  initialNotes,
+  listClassName,
+}: {
+  initialNotes: Note[];
+  listClassName?: string;
+}) => {
   const { currentNote } = useNotesStore();
   const [searchText, setSearchText] = useState("");
   const [localNotes, setLocalNotes] = useState(initialNotes);
@@ -42,8 +48,8 @@ const Notes = ({ initialNotes }: { initialNotes: Note[] }) => {
   }
 
   return (
-    <div className="flex flex-col gap-2 px-4 pb-4 sm:px-8 sm:pb-8">
-      <div className="relative mb-2 flex items-center">
+    <div className={cn("space-y-4", listClassName)}>
+      <div className="relative flex items-center">
         <SearchIcon className="absolute left-2 size-4" />
         <Input
           className="pl-8"
@@ -52,27 +58,27 @@ const Notes = ({ initialNotes }: { initialNotes: Note[] }) => {
           onChange={(e) => setSearchText(e.target.value)}
         />
       </div>
-
-      {filteredNotes.map((note) => (
-        <div
-          key={note.id}
-          className="group/note relative flex items-center rounded-lg bg-primary pr-14 text-white"
-        >
-          <a className="size-full p-2" href={`/notes/${note.id}`}>
-            <p className="truncate">{note.text || "Empty Note"}</p>
-            <p className="text-xs">
-              {new Date(note.updatedAt).toLocaleTimeString([], {
-                hour: "2-digit",
-                minute: "2-digit",
-                second: undefined,
-                hour12: true,
-              })}
-            </p>
-          </a>
-
-          <DeleteNoteButton noteId={note.id} />
-        </div>
-      ))}
+      <ul className="space-y-2">
+        {filteredNotes.map((note) => (
+          <li
+            key={note.id}
+            className="group/note relative flex items-center rounded-lg bg-primary pr-14 text-white"
+          >
+            <a className="size-full p-2" href={`/notes/${note.id}`}>
+              <p className="truncate">{note.text || "Empty Note"}</p>
+              <p className="text-xs">
+                {new Date(note.updatedAt).toLocaleTimeString([], {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  second: undefined,
+                  hour12: true,
+                })}
+              </p>
+            </a>
+            <DeleteNoteButton noteId={note.id} />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
