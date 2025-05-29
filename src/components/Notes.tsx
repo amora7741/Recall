@@ -17,12 +17,6 @@ const Notes = ({ initialNotes }: { initialNotes: Note[] }) => {
     setLocalNotes(initialNotes);
   }, [initialNotes]);
 
-  const handleLocalNoteDelete = (noteId: string) => {
-    setLocalNotes((prevNotes) =>
-      prevNotes.filter((note) => note.id !== noteId),
-    );
-  };
-
   const realTimeNotes = useMemo(() => {
     return localNotes.map((note) => {
       if (currentNote && currentNote.id === note.id) {
@@ -76,7 +70,7 @@ const Notes = ({ initialNotes }: { initialNotes: Note[] }) => {
             </p>
           </a>
 
-          <DeleteNoteButton noteId={note.id} onDelete={handleLocalNoteDelete} />
+          <DeleteNoteButton noteId={note.id} />
         </div>
       ))}
     </div>

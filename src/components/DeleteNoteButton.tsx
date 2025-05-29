@@ -18,13 +18,7 @@ import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
 import { deleteNoteAction } from "@/actions/notes";
 
-const DeleteNoteButton = ({
-  noteId,
-  onDelete,
-}: {
-  noteId: string;
-  onDelete: (noteId: string) => void;
-}) => {
+const DeleteNoteButton = ({ noteId }: { noteId: string }) => {
   const { toast } = useToast();
   const router = useRouter();
 
@@ -46,7 +40,6 @@ const DeleteNoteButton = ({
 
       router.replace("/notes");
       router.refresh();
-      onDelete(noteId);
 
       toast({
         title: "Success",
