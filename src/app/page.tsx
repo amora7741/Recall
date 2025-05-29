@@ -9,7 +9,7 @@ export default function Home() {
     <div className="flex w-full flex-col">
       <section className="mx-auto mb-40 mt-20 grid max-w-screen-2xl gap-8 p-4 sm:px-8 lg:grid-cols-2">
         <div className="space-y-8">
-          <h1 className="text-3xl font-bold sm:text-4xl md:text-6xl">
+          <h1 className="text-center text-3xl font-bold sm:text-4xl md:text-start md:text-6xl">
             Remember <span className="text-primary">everything</span> with the
             power of AI
           </h1>
@@ -17,7 +17,7 @@ export default function Home() {
             Recall is an intelligent note-taking app that helps you capture and
             retrieve your ideas instantly with AI assistance.
           </p>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center justify-center gap-4 md:justify-start">
             <Button className="md:px-8 md:py-5" asChild>
               <Link href="/notes">
                 <span>Try Recall</span>
