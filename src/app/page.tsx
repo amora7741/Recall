@@ -67,7 +67,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="hidden bg-muted sm:block">
+      <section className="hidden bg-muted">
         <div className="mx-auto max-w-screen-2xl space-y-16 px-4 py-20 sm:px-8">
           <div className="space-y-4 text-center">
             <h2 className="text-2xl font-bold md:text-4xl">
