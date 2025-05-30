@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { SearchIcon } from "lucide-react";
 import DeleteNoteButton from "@/components/DeleteNoteButton";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 const Notes = ({
   initialNotes,
   listClassName,
@@ -66,7 +67,7 @@ const Notes = ({
             key={note.id}
             className="group/note relative flex items-center rounded-lg bg-primary pr-14 text-white"
           >
-            <a className="size-full p-2" href={`/notes/${note.id}`}>
+            <Link className="size-full p-2" href={`/notes/${note.id}`}>
               <p className="truncate">{note.text || "Empty Note"}</p>
               <p className="text-xs">
                 {new Date(note.updatedAt).toLocaleTimeString([], {
@@ -76,7 +77,7 @@ const Notes = ({
                   hour12: true,
                 })}
               </p>
-            </a>
+            </Link>
 
             <DeleteNoteButton hidden={hideDeleteButton} noteId={note.id} />
           </li>
