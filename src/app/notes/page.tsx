@@ -16,7 +16,7 @@ const Notes = async () => {
   });
 
   return (
-    <div className="size-full overflow-y-auto p-4 sm:p-8">
+    <div className="size-full p-4 sm:p-8">
       <div className="relative mb-8 overflow-hidden rounded-lg bg-primary/10 p-8">
         <h1 className="text-xl font-bold sm:text-3xl lg:text-5xl">
           Welcome to Your Notes!
