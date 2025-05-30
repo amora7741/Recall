@@ -47,17 +47,18 @@ const NoteSidebar = async () => {
         </SheetContent>
       </Sheet>
 
-      <div className="relative hidden w-64 overflow-y-auto border-r md:block lg:w-80">
-        <div className="sticky top-0 z-10 flex items-center justify-between bg-muted/80 p-4 backdrop-blur-lg sm:p-8">
-          <h1 className="text-xl font-semibold">My Notes</h1>
-          <CreateNoteButton hideText />
+      <div className="absolute inset-y-0 hidden w-64 overflow-y-auto border-r md:block lg:w-80">
+        <div className="relative">
+          <div className="sticky top-0 z-10 flex items-center justify-between bg-muted/80 p-4 backdrop-blur-lg sm:p-8">
+            <h1 className="text-xl font-semibold">My Notes</h1>
+            <CreateNoteButton hideText />
+          </div>
+          <Notes
+            initialNotes={notes}
+            hideDeleteButton
+            listClassName="p-4 !pt-2 sm:p-8"
+          />
         </div>
-
-        <Notes
-          initialNotes={notes}
-          hideDeleteButton
-          listClassName="p-4 !pt-2 sm:p-8"
-        />
       </div>
     </>
   );
