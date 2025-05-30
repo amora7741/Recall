@@ -82,7 +82,7 @@ const DeleteNoteButton = ({
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction
             onClick={handleDeleteNote}
-            className="w-24 bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            className="bg-destructive text-destructive-foreground hover:bg-destructive/90 sm:w-24"
           >
             {isPending ? <LoaderCircle className="animate-spin" /> : "Delete"}
           </AlertDialogAction>
