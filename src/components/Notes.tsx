@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { SearchIcon } from "lucide-react";
 import DeleteNoteButton from "@/components/DeleteNoteButton";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
+
 const Notes = ({
   initialNotes,
   listClassName,
