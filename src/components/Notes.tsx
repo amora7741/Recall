@@ -67,7 +67,7 @@ const Notes = ({
             key={note.id}
             className="group/note relative flex items-center rounded-lg bg-primary pr-14 text-white"
           >
-            <Link className="size-full p-2" href={`/notes/${note.id}`}>
+            <a className="size-full p-2" href={`/notes/${note.id}`}>
               <p className="truncate">{note.text || "Empty Note"}</p>
               <p className="text-xs">
                 {new Date(note.updatedAt).toLocaleTimeString([], {
@@ -77,7 +77,7 @@ const Notes = ({
                   hour12: true,
                 })}
               </p>
-            </Link>
+            </a>
 
             <DeleteNoteButton hidden={hideDeleteButton} noteId={note.id} />
           </li>
