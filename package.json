@@ -12,6 +12,9 @@
   "prisma": {
     "schema": "src/db/schema.prisma"
   },
+  "overrides": {
+    "glob": "^10.5.0"
+  },
   "dependencies": {
     "@prisma/client": "^6.16.3",
     "@radix-ui/react-alert-dialog": "^1.1.14",
@@ -45,7 +48,7 @@
     "@types/react-dom": "^18",
     "dotenv-cli": "^8.0.0",
     "eslint": "^8.57.1",
-    "eslint-config-next": "^16.1.1",
+    "eslint-config-next": "^14.2.28",
     "eslint-plugin-tailwindcss": "^3.18.0",
     "postcss": "^8",
     "prettier": "^3.5.3",
